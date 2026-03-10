@@ -1,117 +1,61 @@
 ```mermaid
+%% High-Level Package Diagram for HBnB Application
 classDiagram
-
-class BaseModel {
-    +UUID id
-    +datetime created_at
-    +datetime updated_at
-    +save()
-    +update()
-    +delete()
+%% Presentation Layer
+class PresentationLayer {
+    <<Interface>>
+    +ServiceAPI()
 }
 
+%% Business Logic Layer
+class BusinessLogicLayer {
+    +User
+    +Place
+    +Review
+    +Amenity
+    +OtherModelClasses()
+}
+
+%% Persistence Layer
+class PersistenceLayer {
+    +DatabaseAccess()
+    +Repositories()
+}
+
+%% Communication via Facade Pattern
+PresentationLayer --> BusinessLogicLayer : Facade Pattern
+BusinessLogicLayer --> PersistenceLayer : Database Operations
+
 class User {
-    +string first_name
-    +string last_name
-    +string email
-    +string password
-    +boolean is_admin
-    +register()
-    +update_profile()
-    +delete_user()
+  +String first name
+  +String last name
+  +String email
+  +String password 
 }
 
 class Place {
-    +string title
-    +string description
-    +float price
-    +float latitude
-    +float longitude
-    +create_place()
-    +update_place()
-    +delete_place()
+  +User owner
+  +list amenitites
+  +String title
+  +String description
+  +Float price
+  +Double longitude
+  +Double latitude
 }
+Place ..> User
+Place ..> Amenity
 
 class Review {
-    +int rating
-    +string comment
-    +create_review()
-    +update_review()
-    +delete_review()
+  +Place location
+  +User reviewer
+  +Integer rating
+  +String comment
 }
+Review ..> Place
+Review ..> User
 
 class Amenity {
-    +string name
-    +string description
-    +create_amenity()
-    +update_amenity()
-    +delete_amenity()
+  +String name
+  +String description
 }
-
-BaseModel <|-- User
-BaseModel <|-- Place
-BaseModel <|-- Review
-BaseModel <|-- Amenity
-
-User "1" --> "0..*" Place : owns
-User "1" --> "0..*" Review : writes
-Place "1" --> "0..*" Review : receives
-Place "0..*" -- "0..*" Amenity : has
-classDiagram
-
-class BaseModel {
-    +UUID id
-    +datetime created_at
-    +datetime updated_at
-    +save()
-    +update()
-    +delete()
-}
-
-class User {
-    +string first_name
-    +string last_name
-    +string email
-    +string password
-    +boolean is_admin
-    +register()
-    +update_profile()
-    +delete_user()
-}
-
-class Place {
-    +string title
-    +string description
-    +float price
-    +float latitude
-    +float longitude
-    +create_place()
-    +update_place()
-    +delete_place()
-}
-
-class Review {
-    +int rating
-    +string comment
-    +create_review()
-    +update_review()
-    +delete_review()
-}
-
-class Amenity {
-    +string name
-    +string description
-    +create_amenity()
-    +update_amenity()
-    +delete_amenity()
-}
-
-BaseModel <|-- User
-BaseModel <|-- Place
-BaseModel <|-- Review
-BaseModel <|-- Amenity
-
-User "1" --> "0..*" Place : owns
-User "1" --> "0..*" Review : writes
-Place "1" --> "0..*" Review : receives
-Place "0..*" -- "0..*" Amenity : has
+```
