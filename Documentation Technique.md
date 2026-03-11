@@ -123,8 +123,9 @@ created_at
 updated_at
 
 Diagramme de classes
-classDiagram
 ```mermaid
+classDiagram
+
 class User {
 id
 first_name
@@ -273,8 +274,9 @@ Un équipement peut être associé à plusieurs logements
 Les diagrammes de séquence permettent de montrer comment les composants du système interagissent lors d’un appel API.
 
 4.1 Inscription d’un utilisateur
-sequenceDiagram
 ```mermaid
+sequenceDiagram
+
 Utilisateur->>API: demande d'inscription
 API->>Facade: create_user()
 Facade->>User: création utilisateur
@@ -290,8 +292,9 @@ L’utilisateur envoie une demande d’inscription via l’API.
 La facade crée l’objet utilisateur et l’enregistre dans la base de données.
 
 4.2 Création d’un logement
-sequenceDiagram
 ```mermaid
+sequenceDiagram
+
 Utilisateur->>API: créer un logement
 API->>Facade: create_place()
 Facade->>Place: création du logement
@@ -302,8 +305,10 @@ Facade-->>API: réponse
 API-->>Utilisateur: logement créé
 4.3 Ajout d’un avis
 ```
-sequenceDiagram
+
 ```mermaid
+sequenceDiagram
+
 Utilisateur->>API: ajouter un avis
 API->>Facade: create_review()
 Facade->>Review: création de l'avis
@@ -314,8 +319,10 @@ Facade-->>API: réponse
 API-->>Utilisateur: avis ajouté
 4.4 Récupération de la liste des logements
 ```
-sequenceDiagram
+
 ```mermaid
+sequenceDiagram
+
 Utilisateur->>API: demander les logements
 API->>Facade: get_places()
 Facade->>Database: requête logements
