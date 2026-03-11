@@ -304,8 +304,10 @@ Database-->>Place: confirmation
 Place-->>Facade: succès
 Facade-->>API: réponse
 API-->>Utilisateur: logement créé
+```
 4.3 Ajout d’un avis
 
+```mermaid
 sequenceDiagram
 
 Utilisateur->>API: ajouter un avis
@@ -316,8 +318,10 @@ Database-->>Review: confirmation
 Review-->>Facade: succès
 Facade-->>API: réponse
 API-->>Utilisateur: avis ajouté
+```
 4.4 Récupération de la liste des logements
 
+```mermaid
 sequenceDiagram
 
 Utilisateur->>API: demander les logements
