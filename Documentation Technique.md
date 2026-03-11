@@ -292,6 +292,7 @@ L’utilisateur envoie une demande d’inscription via l’API.
 La facade crée l’objet utilisateur et l’enregistre dans la base de données.
 
 4.2 Création d’un logement
+
 ```mermaid
 sequenceDiagram
 
